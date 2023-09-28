@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Maths question</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="cont">
+      <div class="box" id="box">
+        <h2 id="equationbox">
+          <input
+            class="inp"
+            id="a"
+            onchange="vala(this.value)"
+            required
+            type="number"
+            value=""
+          />X2 +<input
+            class="inp"
+            id="b"
+            onchange="valb(this.value)"
+            required
+            type="number"
+            value=""
+          />X +<input
+            class="inp"
+            id="c"
+            onchange="valc(this.value)"
+            required
+            type="number"
+            value=""
+          />
+          = 0
+        </h2>
+        <a id="btn" class="btn">Solve</a>
+        <a id="btn2" class="btn hide">Reset</a>
+      </div>
+      <div class="box box2" id="box">
+        <h3 style="margin-bottom: 2px;">Answer :</h3>
+        <p class="boxPera hidden" id="boxPera">
+          Coffiecient of x2 (a) = <span id="vala"></span><br />Coffiecient of x
+          (b) = <span id="valb"></span><br />Constant (c) =
+          <span id="valc"></span><br />Discriminent (D) = <span id="vald"></span
+          ><br />Value of x is = <span id="positivex"></span> &
+          <span id="negetivex"></span>
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
