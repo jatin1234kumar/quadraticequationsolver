@@ -31,7 +31,7 @@ const valc = (valc) => {
 // function to check wether the give function contains decimal or not.
 function isDecimal(num) {
     return (num % 1);
- }
+}
 
 // add an event listner whenever the solve button got pressed.
 btn.addEventListener("click", () => {
@@ -42,65 +42,65 @@ btn.addEventListener("click", () => {
     // check for the input value of a to be undefined or empty.
     else if (a == undefined || a == "") {
         alert("Please fill the details properly!");
-    } 
-    
+    }
+
     // check for the input value of b to be undefined or empty.
     else if (b == undefined || b == "") {
         alert("Please fill the details properly!");
     }
-    
+
     // check for the input value of c to be undefined or empty.
     else if (c == undefined || c == "") {
         alert("Please fill the details properly!");
     }
-    
+
     // check for the input value of a to be not equal to zero.
     else if (a == "0") {
         alert('The given equation is not quadratic');
-    } 
-    
+    }
+
     // if all the value are typed and the value of a is not zero then this will work.
     else {
         // declared a discriminant
         const discriminent = () => {
-            return (b ** 2 - 4 * a * c);
+            return b ** 2 - 4 * a * c;
         };
 
         // it will find the value of negitive x when the value of discriment is greater than or equal to zero.
         const negX = () => {
             let d = Math.sqrt(discriminent());
             let ans = ((-b - d) / (2 * a));
-            if(isDecimal(d)){
-                return (`${-b}-√${discriminent()}/${(2 * a)}`);
-            }else if (isDecimal(ans)){
+            if (isDecimal(d)) {
+                return (`(${-b}-√${discriminent()})/${(2 * a)}`);
+            } else if (isDecimal(ans)) {
                 return (`${(-b - d)}/${(2 * a)}`);
-            }else {
+            } else {
                 return ans;
             }
         };
 
-        
+
         // it will find the value of negitive x when the value of discriment is lessthan zero.
         const negetiveX = () => {
             let d = `${Math.sqrt(-discriminent())}`;
-            if(isDecimal(d)){
+            if (isDecimal(d)) {
                 d = `√${-discriminent()}`;
-                return `${-b}-${d}i/${2 * a}`;
-            }else {
-                return `${-b}-${d}i/${2 * a}`;
+                return `(${-b}-${d}i)/${2 * a}`;
+            } else {
+                return `(${-b}-${d}i)/${2 * a}`;
             }
         }
 
-        
+
         // it will find the value of negitive x when the value of discriment is greater than or equal to zero.
         const posX = () => {
             let d = Math.sqrt(discriminent());
             let ans = ((-b + d) / (2 * a));
-            if(isDecimal(d)){
-                return (`${-b}+√${discriminent()}/${(2 * a)}`);
-            }else if (isDecimal(ans)){
+            if (isDecimal(d)) {
+                return (`(${-b}+√${discriminent()})/${(2 * a)}`);
+            } else if (isDecimal(ans)) {
                 return (`${(-b + d)}/${(2 * a)}`);
-            }else {
+            } else {
                 return ans;
             }
         };
@@ -108,19 +108,29 @@ btn.addEventListener("click", () => {
         // it will find the value of negitive x when the value of discriment is lessthan zero.
         const positiveX = () => {
             let d = `${Math.sqrt(-discriminent())}`;
-            if(isDecimal(d)){
+            if (isDecimal(d)) {
                 d = `√${-discriminent()}`;
-                return `${-b}+${d}i/${2 * a}`;
-            }else {
-                return `${-b}+${d}i/${2 * a}`;
+                return `(${-b}+${d}i)/${2 * a}`;
+            } else {
+                return `(${-b}+${d}i)/${2 * a}`;
             }
         }
 
         if (discriminent() > 0) {
-            writeValues();
+            peraA.innerHTML = `${a}`;
+            peraB.innerHTML = `${b}`;
+            peraC.innerHTML = `${c}`;
+            peraD.innerHTML = `${discriminent()}`;
+            peranx.innerHTML = `${posX()}`;
+            perapx.innerHTML = `${negX()}`;
             showAnswer();
         } else if (discriminent() === 0) {
-            writeValues();
+            peraA.innerHTML = `${a}`;
+            peraB.innerHTML = `${b}`;
+            peraC.innerHTML = `${c}`;
+            peraD.innerHTML = `${discriminent()}`;
+            peranx.innerHTML = `${posX()}`;
+            perapx.innerHTML = `${negX()}`;
             showAnswer();
         } else {
             peraA.innerHTML = `${a}`;
@@ -165,14 +175,5 @@ const hideAnswer = () => {
 btn2.addEventListener('click', () => {
     hideAnswer();
 });
-
-const writeValues = ()=>{
-    peraA.innerHTML = `${a}`;
-    peraB.innerHTML = `${b}`;
-    peraC.innerHTML = `${c}`;
-    peraD.innerHTML = `${discriminent()}`;
-    peranx.innerHTML = `${posX()}`;
-    perapx.innerHTML = `${negX()}`;
-};
 
 
