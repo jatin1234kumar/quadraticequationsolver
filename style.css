@@ -1,26 +1,38 @@
-* {
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: all 0.4s;
 }
 
 body {
-  background: dodgerblue;
   font-family: sans-serif;
 }
 
 .cont {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: transparent;
+  background: dodgerblue;
+  font-family: "Manrope", sans-serif;
+}
+
+.semiCont {
+  width: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .box {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,43 +42,70 @@ body {
   color: black;
   font-weight: 800;
   font-size: 1rem;
+  border-radius: 4px;
 }
 
-.cont .box h2 {
+.box form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.equationBox {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.inp {
+  border: none;
+  width: auto;
+  margin: 0 5px;
+  font-size: 1.2rem;
+  padding: 5px 8px;
+  border-left: 4px solid black;
+  border-right: 4px solid black;
+  border-radius: 15px;
+  outline: none;
+}
+
+input[type="number"] {
+  field-sizing: content;
+  min-width: 4rem !important;
+}
+
+form label {
+  display: block;
+  min-width: 2.5rem;
   text-align: center;
 }
 
-.cont .box h2 .inp {
-  border: 0;
-  width: 3.5rem;
-  margin-right: 5px;
-  margin-left: 5px;
-  font-size: 1.2rem;
-  background: ghostwhite;
-  padding: 5px 2px 5px 8px;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
-  border-radius: 15px;
-  color: black;
-  outline: none;
-  font-weight: 800;
+.buttonBox {
+  display: inherit;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .btn {
-  text-align: center;
-  padding: 5px 8px;
+  padding: 21px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #16e19d;
+  background-color: rgb(56, 255, 189);
   color: white;
-  font-weight: bolder;
-  margin-left: 20px;
-  width: 4rem;
-  height: 4rem;
+  font-weight: 700;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
   outline: none;
-  border-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
   cursor: pointer;
+  border: none;
 }
 
 .btn:hover {
@@ -75,21 +114,27 @@ body {
 
 .box2 {
   margin-top: 20px;
-  height: auto;
-  width: 25.6rem;
+  padding: 1rem;
+  width: 100%;
+  min-height: 3rem;
+  max-height: auto;
   background-color: white;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 8px 10px;
-  transition: all 1s;
+  transition: height 0.8s ease;
+}
+
+.box2 h3 {
+  font-size: 1.5rem;
 }
 
 .boxPera {
+  margin-top: 0.5rem;
   font-size: 1.2rem;
   font-weight: 400;
-  font-family: monospace;
-  color: grey;
+  color: #222;
+  letter-spacing: 1.5px;
 }
 
 .boxPera span {
@@ -111,4 +156,21 @@ body {
 
 #btn2:hover {
   background: brown;
+}
+
+@media only screen and (max-width: 510px) {
+  .cont {
+    padding: 0 1rem;
+  }
+  .semiCont {
+    width: 100%;
+  }
+
+  .box form {
+    flex-wrap: wrap;
+  }
+
+  form .equationBox {
+    width: 100%;
+  }
 }
