@@ -6,44 +6,55 @@
   </head>
   <body>
     <div class="cont">
-      <div class="box" id="box">
-        <h2 id="equationbox">
-          <input
-            class="inp"
-            id="a"
-            onchange="vala(this.value)"
-            required
-            type="number"
-            value=""
-          />X2 +<input
-            class="inp"
-            id="b"
-            onchange="valb(this.value)"
-            required
-            type="number"
-            value=""
-          />X +<input
-            class="inp"
-            id="c"
-            onchange="valc(this.value)"
-            required
-            type="number"
-            value=""
-          />
-          = 0
-        </h2>
-        <a id="btn" class="btn">Solve</a>
-        <a id="btn2" class="btn hide">Reset</a>
-      </div>
-      <div class="box box2" id="box">
-        <h3 style="margin-bottom: 2px;">Answer :</h3>
-        <p class="boxPera hidden" id="boxPera">
-          Coffiecient of x2 (a) = <span id="vala"></span><br />Coffiecient of x
-          (b) = <span id="valb"></span><br />Constant (c) =
-          <span id="valc"></span><br />Discriminent (D) = <span id="vald"></span
-          ><br />Value of x is = <span id="positivex"></span> &
-          <span id="negetivex"></span>
-        </p>
+      <div class="semiCont">
+        <div class="box" id="box">
+          <form>
+            <div id="equationbox" class="equationBox">
+              <input
+                class="inp"
+                id="a"
+                onchange="val(this)"
+                required
+                type="number"
+                value=""
+              /><label name="a">X2 +</label
+              ><input
+                class="inp"
+                id="b"
+                onchange="val(this)"
+                required
+                type="number"
+                value=""
+              /><label name="b">X +</label
+              ><input
+                class="inp"
+                id="c"
+                onchange="val(this)"
+                required
+                type="number"
+                value=""
+              />
+              <label name="c">= 0</label>
+            </div>
+            <div class="buttonBox">
+              <button type="submit" id="btn" class="btn solve">Solve</button>
+              <button type="submit" id="btn2" class="btn reset hide">
+                Reset
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="box box2" id="box">
+          <h3 style="margin-bottom: 2px">Answer :</h3>
+          <p class="boxPera hidden" id="boxPera">
+            Coffiecient of x2 (a) = <span id="vala"></span><br />
+            Coffiecient of x (b) = <span id="valb"></span><br />
+            Constant (c) = <span id="valc"></span><br />
+            Discriminent (D) = <span id="vald"></span><br />
+            Value of x is = <span id="positivex"></span> &
+            <span id="negetivex"></span>
+          </p>
+        </div>
       </div>
     </div>
 
