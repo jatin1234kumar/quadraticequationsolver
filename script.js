@@ -103,9 +103,9 @@ btn.addEventListener("click", (e) => {
       const lines = [
         `Coefficient of x² (a) = ${a}`,
         `Coefficient of x (b) = ${b}`,
-        `Constant (c) = ${c}`,
-        `Discriminant (D) = ${discriminent()}`,
-        `Value of x is = ${posx} & ${negx}`,
+        `Value of Constant (c) = ${c}`,
+        `Discriminant of the equation (D) = ${discriminent()}`,
+        `So, Value of x are = ${posx} & ${negx}`,
       ];
 
       boxPera.classList.remove("hidden");
