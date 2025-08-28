@@ -7,6 +7,7 @@
   <body>
     <div class="cont">
       <div class="semiCont">
+        <h1 class="heading">Quadratic Equation Solver</h1>
         <div class="box" id="box">
           <form>
             <div id="equationbox" class="equationBox">
@@ -16,23 +17,20 @@
                 onchange="val(this)"
                 required
                 type="number"
-                value=""
-              /><label name="a">X2 +</label
-              ><input
+              /><label name="a">X² +</label>
+              <input
                 class="inp"
                 id="b"
                 onchange="val(this)"
                 required
                 type="number"
-                value=""
-              /><label name="b">X +</label
-              ><input
+              /><label name="b">X +</label>
+              <input
                 class="inp"
                 id="c"
                 onchange="val(this)"
                 required
                 type="number"
-                value=""
               />
               <label name="c">= 0</label>
             </div>
@@ -44,16 +42,12 @@
             </div>
           </form>
         </div>
-        <div class="box box2" id="box">
+
+        <!-- Answer Box -->
+        <div class="box box2">
           <h3 style="margin-bottom: 2px">Answer :</h3>
-          <p class="boxPera hidden" id="boxPera">
-            Coffiecient of x2 (a) = <span id="vala"></span><br />
-            Coffiecient of x (b) = <span id="valb"></span><br />
-            Constant (c) = <span id="valc"></span><br />
-            Discriminent (D) = <span id="vald"></span><br />
-            Value of x is = <span id="positivex"></span> &
-            <span id="negetivex"></span>
-          </p>
+          <!-- Start Empty -->
+          <p class="boxPera hidden" id="boxPera"></p>
         </div>
       </div>
     </div>

@@ -6,12 +6,6 @@ const btn2 = document.getElementById("btn2");
 
 const box = document.getElementById("box");
 const boxPera = document.getElementById("boxPera");
-const peraA = document.getElementById("vala");
-const peraB = document.getElementById("valb");
-const peraC = document.getElementById("valc");
-const peraD = document.getElementById("vald");
-const peranx = document.getElementById("positivex");
-const perapx = document.getElementById("negetivex");
 
 // variable for use.
 const desabledColor = "#cbcbcb";
@@ -23,9 +17,11 @@ let a, b, c;
 function val(e) {
   if (e.id == "a") {
     a = e.value;
-  } else if (e.id == "b") {
+  }
+  else if (e.id == "b") {
     b = e.value;
-  } else {
+  }
+  else {
     c = e.value;
   }
 }
@@ -33,6 +29,35 @@ function val(e) {
 // function to check wether the give function contains decimal or not.
 function isDecimal(num) {
   return num % 1;
+}
+
+// typing animation function
+function typeParagraph(element, lines, speed = 40, lineDelay = 200) {
+  element.innerHTML = "";
+  let lineIndex = 0;
+
+  function typeLine() {
+    if (lineIndex >= lines.length) return;
+
+    let line = lines[lineIndex];
+    let i = 0;
+    let span = document.createElement("span");
+    element.appendChild(span);
+
+    let interval = setInterval(() => {
+      span.innerHTML = line.substring(0, i) + `<span class="typing"></span>`;
+      i++;
+      if (i > line.length) {
+        clearInterval(interval);
+        span.innerHTML = line; // final cleanup
+        element.appendChild(document.createElement("br"));
+        lineIndex++;
+        setTimeout(typeLine, lineDelay);
+      }
+    }, speed);
+  }
+
+  typeLine();
 }
 
 // add an event listner whenever the solve button got pressed.
@@ -46,27 +71,9 @@ btn.addEventListener("click", (e) => {
   ) {
     alert("Please update the given fields to proceed further!");
   }
-  // check for the input value of a to be undefined or empty.
-  else if (a == undefined || a == "") {
-    alert("Please fill the value of a properly!");
-  }
-
-  // check for the input value of b to be undefined or empty.
-  else if (b == undefined || b == "") {
-    alert("Please fill the value of b properly!");
-  }
-
-  // check for the input value of c to be undefined or empty.
-  else if (c == undefined || c == "") {
-    alert("Please fill the vlaue of c properly!");
-  }
-
-  // check for the input value of a to be not equal to zero.
   else if (a == "0") {
     alert("The given equation is not quadratic");
   }
-
-  // if all the value are typed and the value of a is not equal to zero then the else code will work.
   else {
     e.preventDefault();
 
@@ -77,6 +84,7 @@ btn.addEventListener("click", (e) => {
 
     function hideAnswer() {
       boxPera.classList.add("hidden");
+      boxPera.innerHTML = ""; // clear instantly
       btn2.classList.add("hide");
       btn.classList.remove("hide");
       equationBox.style.pointerEvents = "";
@@ -91,11 +99,14 @@ btn.addEventListener("click", (e) => {
       c = "";
     }
 
-    function showAnswer() {
-      peraA.innerHTML = `${a}`;
-      peraB.innerHTML = `${b}`;
-      peraC.innerHTML = `${c}`;
-      peraD.innerHTML = `${discriminent()}`;
+    function showAnswer(posx, negx) {
+      const lines = [
+        `Coefficient of x² (a) = ${a}`,
+        `Coefficient of x (b) = ${b}`,
+        `Constant (c) = ${c}`,
+        `Discriminant (D) = ${discriminent()}`,
+        `Value of x is = ${posx} & ${negx}`,
+      ];
 
       boxPera.classList.remove("hidden");
       btn2.classList.remove("hide");
@@ -106,69 +117,69 @@ btn.addEventListener("click", (e) => {
       inputFields.forEach((element) => {
         element.style.backgroundColor = desabledColor;
       });
+
+      // start typing animation
+      typeParagraph(boxPera, lines);
     }
 
-    // it will find the value of negitive x when the value of discriment is greater than or equal to zero.
+    // find roots
     const realNegX = () => {
       let d = Math.sqrt(discriminent());
       let ans = (-b - d) / (2 * a);
       if (isDecimal(d)) {
         return `(${-b}-√${discriminent()})/${2 * a}`;
-      } else if (isDecimal(ans)) {
+      }
+      else if (isDecimal(ans)) {
         return `${-b - d}/${2 * a}`;
-      } else {
+      }
+      else {
         return ans;
       }
     };
 
-    // it will find the value of negitive x when the value of discriment is lessthan zero.
     const imagineryNegitiveX = () => {
       let d = `${Math.sqrt(-discriminent())}`;
       if (isDecimal(d)) {
         d = `√${-discriminent()}`;
         return `(${-b}-${d}i)/${2 * a}`;
-      } else {
+      }
+      else {
         return `(${-b}-${d}i)/${2 * a}`;
       }
     };
 
-    // it will find the value of negitive x when the value of discriment is greater than or equal to zero.
     const realPosX = () => {
       let d = Math.sqrt(discriminent());
       let ans = (-b + d) / (2 * a);
       if (isDecimal(d)) {
         return `(${-b}+√${discriminent()})/${2 * a}`;
-      } else if (isDecimal(ans)) {
+      }
+      else if (isDecimal(ans)) {
         return `${-b + d}/${2 * a}`;
-      } else {
+      }
+      else {
         return ans;
       }
     };
 
-    // it will find the value of negitive x when the value of discriment is lessthan zero.
     const imagineryPositiveX = () => {
       let d = `${Math.sqrt(-discriminent())}`;
       if (isDecimal(d)) {
         d = `√${-discriminent()}`;
         return `(${-b}+${d}i)/${2 * a}`;
-      } else {
+      }
+      else {
         return `(${-b}+${d}i)/${2 * a}`;
       }
     };
 
-    if (discriminent() > 0) {
-      peranx.innerHTML = `${realPosX()}`;
-      perapx.innerHTML = `${realNegX()}`;
-      showAnswer();
-    } else if (discriminent() === 0) {
-      peranx.innerHTML = `${realPosX()}`;
-      perapx.innerHTML = `${realNegX()}`;
-      showAnswer();
-    } else {
-      perapx.innerHTML = `${imagineryPositiveX()}`;
-      peranx.innerHTML = `${imagineryNegitiveX()}`;
-      showAnswer();
+    if (discriminent() >= 0) {
+      showAnswer(realPosX(), realNegX());
     }
+    else {
+      showAnswer(imagineryPositiveX(), imagineryNegitiveX());
+    }
+
     btn2.addEventListener("click", () => {
       hideAnswer();
     });

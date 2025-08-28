@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap");
 
 *,
 *::after,
@@ -9,7 +9,10 @@
 }
 
 body {
-  font-family: sans-serif;
+  /* font-family: "Syne", sans-serif; */
+  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
 }
 
 .cont {
@@ -21,6 +24,11 @@ body {
   flex-direction: column;
   background: dodgerblue;
   font-family: "Manrope", sans-serif;
+}
+
+.heading {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 .semiCont {
@@ -79,7 +87,8 @@ input[type="number"] {
 
 form label {
   display: block;
-  min-width: 2.5rem;
+  font-size: 1.2rem;
+  min-width: 3rem;
   text-align: center;
 }
 
@@ -156,6 +165,24 @@ form label {
 
 #btn2:hover {
   background: brown;
+}
+
+.typing {
+  display: inline-block;
+  border-right: 2px solid black;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
+  100% {
+    border-color: transparent;
+  }
 }
 
 @media only screen and (max-width: 510px) {
